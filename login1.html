@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <link rel="Stylesheet" href="login1.css">
+        <title>login page</title>
+       
+    </head>
+    <body>
+        <script language="javascript">
+            function validate()
+            {
+                var user=document.f1.username.value;
+                var pass=document.f1.pass.value;
+                /*alert("welcome");
+                alert(user);
+                alert(pass);*/
+               
+                sp=0;
+                for(i=0;i<user.length;i++)
+                {
+                    ch=user.charAt(i);
+                    if(ch==' ')
+                    sp=1;
+                }
+                alphadigit=0;
+                alpha=/[a-zA-Z]/;
+                digit=/[0-9]/;
+                if(pass.match(alpha)&&pass.match(digit))
+                alphadigit=1;
+                if(sp==1)
+                {
+                    alert("please enter a username without space");
+                    return false;
+                }
+               else if(user==""||user.length<9)
+               {
+                alert("please enter a valid username");
+                return false;
+               }
+                else if(pass==""||pass.length<9)
+                {
+                alert("please input a valid password");
+                return false;
+                }
+                
+                else if(alphadigit==0)
+                {
+                alert("your password must contain atleast one special character");
+                return false;
+                }
+                else{
+                    alert("sucessfull validation");
+                    return true;
+                }
+                return true;
+            }
+        </script>
+        <div class="box">
+            <form name="f1" action="login1.php" method="post" onsubmit="validate();">
+                Username: <input type="text" name="username" value=""><br>
+                Password:<input type="password" name="pass" value=""><br>
+                <input type="submit" name="submit" value="Login"><br>
+            </form>
+            <button>clear/reset</button>
+        </div>
+    </body>
+</html>
